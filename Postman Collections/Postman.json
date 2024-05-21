@@ -384,6 +384,41 @@
 						"url": "https://restful-booker.herokuapp.com/booking/1663"
 					},
 					"response": []
+				},
+				{
+					"name": "Put Request",
+					"id": "226d8134-0dae-462e-9160-b76e9d723cbf",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token=d0a4ec5ef552f6b"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"James\",\r\n    \"lastname\" : \"KawlBrown\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://restful-booker.herokuapp.com/booking/1663"
+					},
+					"response": []
 				}
 			],
 			"id": "d918bf74-ef4e-4604-bbb2-6aeef29c86f7"
