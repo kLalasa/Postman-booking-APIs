@@ -316,6 +316,39 @@
 			"id": "6d001c8c-cf02-44c2-be70-ab970eea6e62"
 		},
 		{
+			"name": "EndtoEnd Scenarios",
+			"item": [
+				{
+					"name": "https://restful-booker.herokuapp.com/auth",
+					"id": "b043c8ca-2041-42ef-a7c9-876bca586058",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://restful-booker.herokuapp.com/auth"
+					},
+					"response": []
+				}
+			],
+			"id": "d918bf74-ef4e-4604-bbb2-6aeef29c86f7"
+		},
+		{
 			"name": "Get single booking details wrond ID",
 			"event": [
 				{
