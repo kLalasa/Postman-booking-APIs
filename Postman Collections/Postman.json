@@ -319,7 +319,7 @@
 			"name": "EndtoEnd Scenarios",
 			"item": [
 				{
-					"name": "https://restful-booker.herokuapp.com/auth",
+					"name": "Auth",
 					"id": "b043c8ca-2041-42ef-a7c9-876bca586058",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -344,36 +344,49 @@
 						"url": "https://restful-booker.herokuapp.com/auth"
 					},
 					"response": []
+				},
+				{
+					"name": "Create booking",
+					"id": "5c38699f-df81-4add-947d-c3167800f968",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"Pavan\",\r\n    \"lastname\" : \"Mehra\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://restful-booker.herokuapp.com/booking"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Booking",
+					"id": "74c577c4-e745-4eeb-9176-b7459121c893",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restful-booker.herokuapp.com/booking/1663"
+					},
+					"response": []
 				}
 			],
 			"id": "d918bf74-ef4e-4604-bbb2-6aeef29c86f7"
-		},
-		{
-			"name": "Get single booking details wrond ID",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "7b13cb69-369b-461f-93f3-e23ae35fbb6c",
-						"exec": [
-							"pm.test(\"verifying the statuscode\",()=>{\r",
-							"    pm.response.to.have.status(404);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"id": "12fe6a9e-bc30-4f9c-8e0d-b06639785d98",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": "https://restful-booker.herokuapp.com/booking/{{booking_id}}"
-			},
-			"response": []
 		}
 	]
 }
