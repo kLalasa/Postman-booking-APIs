@@ -419,6 +419,63 @@
 						"url": "https://restful-booker.herokuapp.com/booking/1663"
 					},
 					"response": []
+				},
+				{
+					"name": "Patch request",
+					"id": "b4cd2946-152a-451e-80c5-5b50f0c747cc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token=d0a4ec5ef552f6b"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"James\",\r\n    \"lastname\" : \"Brown\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://restful-booker.herokuapp.com/booking/1663"
+					},
+					"response": []
+				},
+				{
+					"name": "Del request",
+					"id": "5d9c8611-ae6a-4c27-b868-b9e4a6a68403",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token=d0a4ec5ef552f6b"
+							}
+						],
+						"url": "https://restful-booker.herokuapp.com/booking/1663"
+					},
+					"response": []
 				}
 			],
 			"id": "d918bf74-ef4e-4604-bbb2-6aeef29c86f7"
