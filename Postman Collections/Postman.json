@@ -907,6 +907,25 @@
 				}
 			],
 			"id": "2603364e-afae-4441-82f6-7a7705cf8c85"
+		},
+		{
+			"name": "EndtoEnd Scenario-3",
+			"item": [
+				{
+					"name": "Get Booking",
+					"id": "f19a61f9-35a9-4268-8825-2818928a83b0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restful-booker.herokuapp.com/booking"
+					},
+					"response": []
+				}
+			],
+			"id": "a8448ec5-5e3c-482f-bbb7-85107f70076c"
 		}
 	]
 }
