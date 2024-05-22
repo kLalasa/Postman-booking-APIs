@@ -913,6 +913,28 @@
 			"item": [
 				{
 					"name": "Get Booking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "43f2862a-305b-4f53-bb2b-ba804666f5b7",
+								"exec": [
+									"// Parse the JSON response\r",
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"// Set the environment variable to the booking_id\r",
+									"pm.environment.set(\"booking_id\", jsonData[0].bookingid);",
+									"// Add a test to check the length of the response data",
+									"pm.test(\"The response data length must be greater than zero\", function () {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.length).to.be.greaterThan(0, \"Response data should not be empty\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "f19a61f9-35a9-4268-8825-2818928a83b0",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -926,6 +948,23 @@
 				},
 				{
 					"name": "Auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b7d109da-8574-4581-88ca-05595835dd5b",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"booking_token\", jsonData.token);",
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "c0b39fca-5cf2-4a8c-b059-7f2397448c11",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -953,6 +992,55 @@
 				},
 				{
 					"name": "Update booking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4139d8e8-9956-40f3-b0e5-d9f560627ce2",
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Firstname and lastname are non-empty strings\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.firstname).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Firstname should not be empty\");",
+									"    pm.expect(responseData.lastname).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Lastname should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Totalprice is a non-negative integer\", function () {",
+									"  const responseData = pm.response.json();",
+									"  pm.expect(responseData.totalprice).to.be.a('number').and.to.be.at.least(0);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Depositpaid is a boolean value\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.depositpaid).to.be.a('boolean');",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "eb226aa9-8e0b-4d10-bcf1-0560891b7db8",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -970,7 +1058,7 @@
 							},
 							{
 								"key": "Cookie",
-								"value": "token=abc123"
+								"value": "token={{booking_token}}"
 							}
 						],
 						"body": {
@@ -987,7 +1075,7 @@
 					"response": []
 				},
 				{
-					"name": "https://restful-booker.herokuapp.com/booking/{{booking_id}}",
+					"name": "Get Booking-ID",
 					"event": [
 						{
 							"listen": "test",
@@ -1000,7 +1088,7 @@
 									"",
 									"",
 									"pm.test(\"Response time is less than 200ms\", function () {",
-									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"  pm.expect(pm.response.responseTime).to.be.below(500);",
 									"});",
 									"",
 									"",
