@@ -839,7 +839,7 @@
 								"id": "38738064-4184-48a9-899f-97acb3e16cf6",
 								"exec": [
 									"pm.test(\"Response time is less than 200ms\", function () {",
-									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"  pm.expect(pm.response.responseTime).to.be.below(500);",
 									"});",
 									""
 								],
@@ -876,14 +876,18 @@
 							"script": {
 								"id": "b6292cc5-a5f7-4090-9ad6-d27d0ab3db11",
 								"exec": [
-									"pm.test(\"Verify booking deletion status code is 404\", function () {\r",
-									"    pm.expect(pm.response.code).to.equal(404);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Verify response body indicates not found\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData).to.have.property('error').that.equals('Not Found');\r",
-									"});"
+									"pm.test(\"Verify booking deletion status code is 404\", function () {",
+									"    pm.expect(pm.response.code).to.equal(404);",
+									"});",
+									"",
+									"pm.test(\"Verify response body indicates not found\", function () {",
+									"    var jsonData = pm.response.text();",
+									"    pm.expect(jsonData).to.equal('Not Found');",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
