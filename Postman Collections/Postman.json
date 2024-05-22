@@ -870,6 +870,26 @@
 				},
 				{
 					"name": "Get booking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b6292cc5-a5f7-4090-9ad6-d27d0ab3db11",
+								"exec": [
+									"pm.test(\"Verify booking deletion status code is 404\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify response body indicates not found\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('error').that.equals('Not Found');\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "98a16c14-721f-455b-91da-0ccf06a5cdb4",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
