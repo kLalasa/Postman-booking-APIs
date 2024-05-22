@@ -1212,6 +1212,28 @@
 						"url": "https://restful-booker.herokuapp.com/auth"
 					},
 					"response": []
+				},
+				{
+					"name": "Delete Request",
+					"id": "429af642-1138-4bff-8640-58f4e8093d39",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token=abc123"
+							}
+						],
+						"url": "https://restful-booker.herokuapp.com/booking/{{booking_id}}"
+					},
+					"response": []
 				}
 			],
 			"id": "4fcc6bfa-34aa-4807-8206-b88b798df724"
