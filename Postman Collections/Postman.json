@@ -1139,7 +1139,54 @@
 		},
 		{
 			"name": "EndToEnd Scenarios-4",
-			"item": [],
+			"item": [
+				{
+					"name": "Get BookingIds",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e3cab637-06c3-462c-a8ab-29771fb7cd6b",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is within an acceptable range\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the required fields\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('array');\r",
+									"    responseData.forEach(function(item) {\r",
+									"        pm.expect(item.bookingid).to.exist;\r",
+									"    });\r",
+									"});\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"booking_id\", jsonData[0].bookingid);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "dbbd448b-27f1-4aae-9066-906d023d6a3e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restful-booker.herokuapp.com/booking"
+					},
+					"response": []
+				}
+			],
 			"id": "4fcc6bfa-34aa-4807-8206-b88b798df724"
 		}
 	]
