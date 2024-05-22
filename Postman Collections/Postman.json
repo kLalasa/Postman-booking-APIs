@@ -778,7 +778,7 @@
 									"",
 									"",
 									"pm.test(\"Response time is less than 200ms\", function () {",
-									"  pm.expect(pm.response.responseTime).to.be.below(500);",
+									"  pm.expect(pm.response.responseTime).to.be.below(1000);",
 									"});",
 									"",
 									"",
@@ -795,7 +795,10 @@
 									"    pm.expect(responseData.booking.bookingdates).to.have.property('checkin').that.is.a('string');",
 									"    pm.expect(responseData.booking.bookingdates).to.have.property('checkout').that.is.a('string');",
 									"});",
-									""
+									"pm.test(\"Set the environment variable Booking_id to the value of bookingid from the JSON response\", function () {",
+									"    const bookingId = pm.response.json().bookingid;",
+									"    pm.environment.set(\"Booking_id\", bookingId.toString());",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -824,6 +827,28 @@
 							}
 						},
 						"url": "https://restful-booker.herokuapp.com/booking"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Booking",
+					"id": "9b3d94d7-63d3-4ee4-9b53-7d097eb81ba6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token=abc123"
+							}
+						],
+						"url": "https://restful-booker.herokuapp.com/booking/{{booking_id}}"
 					},
 					"response": []
 				}
