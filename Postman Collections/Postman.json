@@ -1484,6 +1484,49 @@
 				},
 				{
 					"name": "Update Booking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "69d0ce85-cc90-446a-8ab0-94358a84922f",
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"pm.test(\"Response status code is 403\", function () {",
+									"  pm.expect(pm.response.code).to.equal(403);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type header is 'text/plain'\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.equal(\"text/plain\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response body contains the message 'Forbidden'\", function () {",
+									"  pm.expect(pm.response.text()).to.include(\"Forbidden\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Booking_id parameter is present in the URL\", function () {",
+									"    pm.expect(pm.request.url.toString()).to.include(\"{{booking_id}}\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response does not contain sensitive information\", function () {",
+									"    pm.expect(pm.response.text()).to.not.include(\"password\");",
+									"    pm.expect(pm.response.text()).to.not.include(\"credit_card\");",
+									"    pm.expect(pm.response.text()).to.not.include(\"ssn\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "054d0977-da96-44cb-8a2f-f5378f5bb28d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
