@@ -1214,6 +1214,19 @@
 					"response": []
 				},
 				{
+					"name": "Get BookingID",
+					"id": "a8d45878-e43e-4ca9-8055-a9e70fc14550",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://restful-booker.herokuapp.com/booking/{{booking_id}}"
+					},
+					"response": []
+				},
+				{
 					"name": "Delete Request",
 					"id": "429af642-1138-4bff-8640-58f4e8093d39",
 					"protocolProfileBehavior": {
